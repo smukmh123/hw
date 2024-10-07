@@ -23,6 +23,6 @@ int main() {
         }
     }
 
-    printf("is_prime?: %s\n", isPrime ? "true" : "false");
+    printf("Please enter a number: %s\n", isPrime ? "It is a prime number." : "It is not a prime number.");
     return 0;
 }
