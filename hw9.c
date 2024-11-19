@@ -1,22 +1,25 @@
 #include <stdio.h>
-#include <string.h>
+#include <ctype.h>
 
 int main(void) {
-    char str[100]; 
+    char ch;
 
     printf("문자열 입력: ");
-    fgets(str, sizeof(str), stdin);  
-
-    for (int i = 0; str[i] != '\0'; i++) {
-        if (str[i] >= 'A' && str[i] <= 'Z') {
-            str[i] = str[i] + ('a' - 'A');  
-        } else if (str[i] >= 'a' && str[i] <= 'z') {
-            str[i] = str[i] - ('a' - 'A');  
+    
+    // 하나씩 입력받아서 처리
+    while ((ch = getchar()) != '\n') {  // Enter 키를 입력할 때까지 반복
+        if (ch >= 'A' && ch <= 'Z') {
+            putchar(ch + ('a' - 'A'));  // 대문자 -> 소문자
+        } else if (ch >= 'a' && ch <= 'z') {
+            putchar(ch - ('a' - 'A'));  // 소문자 -> 대문자
+        } else {
+            // 알파벳 외의 문자가 들어오면 오류 메시지 출력
+            printf("\n잘못된 입력입니다.\n");
+            return 1;
         }
     }
 
-    // 변환된 문자열 출력
-    printf("변환된 문자열: %s\n", str);
+    printf("\n");  // 줄 바꿈 출력
 
     return 0;
 }
